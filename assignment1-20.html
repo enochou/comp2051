@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+<script>
+var counter = 1; 
+var input; 
+var sale = new Array(); 
+var total = 0;
+var earnings; 
+
+document.writeln("Welcome to the commision and payment calculator! <br/> \
+	 please enter the commission rate and individual gross sales earned by an employee!");
+
+input = prompt("Did you sell any merchandise today? (Type 'y' for yes and 'n' for no)", "");
+	while (input != "n")
+ 	{
+
+	sale_item = parseFloat(prompt("Please enter the sale price of item number " + counter + " :", ""));
+    sale[(counter - 1)] = sale_item; 
+
+	counter += 1 
+	input = prompt("Would you like to enter a new sale item? (Type 'y' for yes and 'n' for no)", "");
+ 	}
+
+ 	if (counter > 1) 
+ 	{
+  	for (var i = 0; i < sale.length; i++) { // Loop through all the elements within the salesperson array
+  		total += sale[i]; // Add the value within the sale array to the total
+  	};
+
+  	var commission = parseFloat(prompt("Please enter the commission rate that you receive (e.g. 6.5% = 6.5): ", "")); // Enter the commission rate
+  	earnings = total * (commission / 100) // Calculate the total commission earnings
+
+ 	document.writeln("<br/><br/> Based on our review, you sold a total of " + (counter - 1) + " items. \
+  		<br/> This means that you earned a total of $" + earnings + " dollars in commission")
+	}
+
+ 	else // The salesperson did not actually sell something
+{
+	document.writeln("<br/><br/> Based on the information you provided, you did not sell anything today. <br/> \
+			This also means that you did not earn any commission. Please work harder tomorrow!");
+		// Note that <br/><br/> inserts a blank line in the output
+ 	} 
+	</script>
+
+</head>
+
+<body>
+</body>
+</html>
