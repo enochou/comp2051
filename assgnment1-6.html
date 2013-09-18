@@ -1,0 +1,48 @@
+<html>
+	<meta charset ="utf-8">
+	<title> Assigement1-6 Employee Pay</title>
+	<script type="text/javascript">
+	    var conhour = 40;  // working hours per week by contract
+		var name;
+		var payrate,payratefloat=0;
+		var workhour, workhourfloat=0;
+		var overpayrate, overpayratefloat=0;
+		var insurance, insurancefloat=0;
+		var savings, savingsfloat=0;
+		var taxrate, taxratefloat=0;
+		var  grosspayfloat;
+		var  netpayfloat;
+		name = prompt("Please into the name:","");
+		while (name != "") {
+			var overpay = 0.0;
+			// begin to input 
+		payrate = prompt("Please into the payrate","");
+		workhour = prompt("Plasese input into the number of work hours","");
+		overpayrate = prompt("Please input into overwork Pay rate","");
+		// document.writeln("Please into payroll deductions");
+		insurance = prompt("Please into medical insurance","");
+		savings =prompt("please into savings","");
+		taxrate = prompt("Please into tax rate", "");
+		// end input and begin conversion 
+		payratefloat = parseFloat(parseFloat(payrate).toFixed(2));
+		workhourfloat =parseFloat(parseFloat(workhour).toFixed(1));
+		overpayratefloat = parseFloat(parseFloat(overpayrate).toFixed(2));
+		insurancefloat =parseFloat(parseFloat(insurance).toFixed(2));
+		savingsfloat = parseFloat(parseFloat(savings).toFixed(2));
+		taxratefloat = parseFloat(parseFloat(taxrate).toFixed(2));
+		//calculate gross pay 
+		if (workhourfloat > conhour) 
+			overpay = (workhourfloat-conhour) * overpayratefloat;  // over work payment
+		grosspayfloat = workhourfloat*payratefloat + parseFloat(overpay.toFixed(2));   // gross pay
+		netpayfloat = (grosspayfloat- (savingsfloat+insurancefloat))*(1-taxratefloat); // net pay;
+
+		// Dispaly the gross pay and net pay
+		document.writeln("<h1>" + name + "'s gross pay is " + grosspayfloat + "<br>");
+		document.writeln(name + "'s net pay is " + netpayfloat.toFixed(2)+ "</h1>");
+
+		//input the next employee
+		name = prompt("Please into the name:","");
+
+		}
+	</script>
+</html>
