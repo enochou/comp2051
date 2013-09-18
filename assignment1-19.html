@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+<script = "text/javascript">
+	var account = parseInt(prompt("Please enter the account nummber:", ""));
+	var prev_balance = parseFloat(prompt("Please enter previous balance on the account:",""));
+	var current_charges = parseFloat(prompt("Please enter the total charges over the last 30 days:",""));
+	var payments = parseFloat(prompt("Please enter the total payments made over the last 30 days:",""));
+	var credit_limit = parseFloat(prompt("Please enter the credit limit on the current account:",""));
+	var balance_owing; 
+	
+	balance_owing = prev_balance - payments + current_charges; 
+
+	if (balance_owing < credit_limit) 
+	{
+		document.writeln("The current account is not overdrawn.");
+		document.writeln("Your client has a total of " + (credit_limit.toFixed(2) - balance_owing.toFixed(2)) + " available before reaching their credit limit!");
+	}
+	else 
+	{
+		document.writeln("The current account is overdrawn.");
+		document.writeln("Your client has exceeded the credit limit by a total of " + (balance_owing.toFixed(2) - credit_limit.toFixed(2)) + ".");	
+		}
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
