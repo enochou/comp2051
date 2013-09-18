@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+<script type="text/javascript">
+window.onload=function payroll(){
+
+
+	employee1 = new Object();
+	employee1.identity = prompt("Please enter your name ", "");
+	employee1.hours = parseFloat(prompt("Please enter how many hours the employee worked this week: ", ""));
+	basic_rate = parseFloat(prompt("Please enter your rate per hour: ", ""));
+
+	if (employee1.hours > 40) // If the employee has worked more than 40 hours a week
+	{
+		employee1.overtime_rate = parseFloat(prompt("Please enter " + employee1.identity + " 's overtime pay rate: ", ""));
+		employee1.overtime = employee1.hours - 40;
+		employee1.overtime_due = employee1.overtime * employee1.overtime_rate;
+		total_owed = employee1.overtime_due + (40 * basic_rate); // Calculate the total dollars owed
+		}
+	else // The employee has not worked more than 40 hours a week
+	{
+		total_owed = employee1.hours * basic_rate; // Calculate the total dollars owed
+	}
+
+	document.write("Based on my calculations, " + employee1.identity + " , is due a total of " + total_owed + " dollars!")
+	
+}
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
