@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Interest</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function deposit()
+	{
+		var principal = parseFloat(prompt("Please input the  principal:",""));
+		var interest= parseFloat(prompt("Please input the interest:",""));
+		var years = parseInt(prompt("Please input the years:",""));
+		var amounts =0;
+
+		document.write('<table width = "40%" border = "1">') // create the table;
+
+		for (var i=1; i<=years; i++) {
+		document.write('<tr>');
+		document.write('<td width = "40">' + i + '</td>');
+		amounts=(principal*Math.pow(1+interest/100, i)).toFixed(2);
+		document.write('<td width = "80">'+ amounts +'<td>');
+		//document.write('</tr>');
+	};
+	document.write('</table>');
+	} 
+
+	</script>
+
+</head>
+
+<body>
+	<h1>This program is for interest calculation </h1>
+	<p> Please input the principal, the annual interest rate and the years</p>
+    <input type="button" id="deposit" value="calculate the amounts" onclick="deposit();">
+</body>
+
+</html>
