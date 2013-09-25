@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Miles and Gasolines </title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function gasolineCal() {
+		var gasArr = new Array();  // hold the number of gasoline for each tankful
+		var milArr = new Array();   // hold the number of miles for each tankful
+		var i =0; // track the numbe of tankful
+		var miles = parseInt(prompt("Input the miles(0 ends input) for " +(i+1) +" tankful","0"));
+		while (miles != 0) {
+		 var gases =parseInt(prompt("input the miles for " + (i+1) + "tankful","0"));
+		 gasArr[i]=gases;
+		 milArr[i] = miles;
+		 i++;
+		 miles = parseInt(prompt("Input the miles for " +(i+1) +" tankful","0"));
+		};
+		document.write("Thanks for all input");
+
+		var gasSum=0;    // sum all gases
+		for (var j=0; j< gasArr.length; j++)
+		{
+		
+			gasSum += gasArr[j];
+		};
+		
+		var mileSum=0;   // sum all miles
+		for (var k=0; k< milArr.length; k++)
+			{
+				
+				mileSum += milArr[k];
+			};
+			
+		// output the result 
+		for (var j=0; j<i; j++)  {
+			document.write("<br>" +(j+1) + "               " +  milArr[j] + "     " + gasArr[j] +"        " + (milArr[j]/gasArr[j]).toFixed(3));
+		};
+			document.write("<br>"+"Sum" +  "           "  + mileSum + "      " + gasSum + "          " + (mileSum/gasSum).toFixed(3));
+
+	};
+	</script>
+
+</head>
+
+<body>
+<h1> This Program is used to Calculated the miles and gasoline </h1>
+<p> Notice: when you input 0 miles, the progrma will start the calculation </p>
+<hr>
+<input type="button" id="gaoline" value="input the miles and gaoline for each tankful" onclick="gasolineCal();">
+
+
+</body>
+
+</html>
