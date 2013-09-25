@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+		function findMax() {
+			document.write("asd");
+		};
+
+	</script>
+
+</head>
+
+<body>
+<body>
+<h1> Welcome to Use Program to Find the Maximum</h1>
+<p> When the enter string is done, the program ends your input</p>
+<hr> 
+<input type="button" id="findmax" value="Press to input and find the max:" onclick="findMax();">
+</body>
+
+</html>
