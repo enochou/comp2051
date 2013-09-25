@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function encrypt() {
+		var original = parseInt(prompt("Please into a four digit integers","0000"));
+		var power = 10;
+		var digit=new Array();
+		var originalback = original;
+		for (var i=0; i<4; i++) {                // for each digit
+            digit[i] = original % power;
+            original = parseInt(original/power);
+		};
+		for (var i=0; i<4; i++) {    // plus 7 module for each digit
+			digit[i] = (digit[i] +7 ) % 10;
+			
+		}
+		var swap = digit[0];               //  swap 
+		    digit[0] = digit[2];
+		    digit[2] = swap;     
+		    swap= digit[1];
+		    digit[1] = digit[3];
+		    digit[3] = swap;
+		   
+		  var encrypt=0;
+
+		 for (var i=3; i>=1; i--)  {         // construct the encrypr
+             encrypt = (encrypt +digit[i] )*10;
+		 };
+		     encrypt= encrypt + digit[0]; 
+		     document.write("<br> original     " + originalback);
+		     document.write("<br>encrypt     "+ encrypt);
+	   }
+	   function decrypt() {
+	   	var decry =  parseInt(prompt("Please into a four decrypted digit integers","0000"));
+		var power = 10;
+		var digit=new Array();
+		var decryback = decry;
+		document.write(decry);
+		for (var i=0; i<4; i++) {   
+		                // for each digit
+            digit[i] = decry % power;
+            
+            decry= parseInt(decry/power);
+		};
+             var swap = digit[0];               //  swap 
+		    digit[0] = digit[2];
+		    digit[2] = swap;     
+		    swap= digit[1];
+		    digit[1] = digit[3];
+		    digit[3] = swap;
+
+		for (var i=0; i<4; i++) {    // plus 7 module for each digit
+			digit[i] = (digit[i] +3 ) % 10;
+			
+		}
+		
+		  var decrypt=0;
+		 for (var i=3; i>=1; i--)  {         // construct the decrypr
+             decrypt = (decrypt +digit[i] )*10;
+		 };
+		     decrypt= decrypt + digit[0]; 
+		     document.write("<br>decrypted  " + decryback);
+		     document.write("<br> decrypt   "+ decrypt);
+	   }
+
+	</script>
+
+</head>
+
+<body>
+<h1> This Program is to encrypt and decrypt</h1>
+<hr>
+<input type="button" id="encrypt" value="Press the button to encrypt" onclick="encrypt();" >
+
+<input type="button" id="encrypt" value="Press the button to decrypt" onclick="decrypt();" >
+
+
+</body>
+
+</html>
