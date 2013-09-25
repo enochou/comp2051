@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+		function palindrome() 
+		{
+			var palin= parseInt(prompt("please input a five-digit interger","00000")); // input string
+			var digit = new Array();  //hold each digit 
+			var power= 10; 
+			var palinback = palin;  // back up the original;
+			var k =4;   // the lenghth of the palinddrome;
+			var five= palin/10000; 
+			var palin_flag=1;
+			while (five < 1 || five >= 10 ) {  // determine if it;s a five-digit integer, if no, input again  
+				palin= parseInt(prompt("Input error, please input a five-digit interger","00000"));
+				palinback = palin;
+				five = palin /10000;
+			};
+			for (var i=0; i<5; i++) {           // pick off each digit
+			
+				digit[i] = palin % power;
+				palin = parseInt(palin / power);
+			};
+
+			for (var i=0; i<k/2; i++ )           // determine if it's a ppalindrome
+			{
+				if (digit[i] != digit[k-i]) {
+					palin_flag = 0;
+				};
+			};
+			if (palin_flag) {             // output the result
+				document.write(palinback + " is a palinddrome!");
+			} else
+			{
+				document.write(palinback + " is not a palinddrome!");
+			};
+
+		}
+
+	</script>
+
+</head>
+
+<body>
+<h1> This Program is to determines if a five-digit is a palindrome</h1>
+<p>please input a five-digit integer </p>
+<hr>
+<input type="button" id="palindrome" value="Press the button to input and determine" onclick="palindrome();" >
+
+
+</body>
+
+</html>
