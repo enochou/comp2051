@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+		function findMax() {
+			//document.write("asd");
+			var max = 0; //  hold the max;
+			var count =0; // track the number you input;
+			var number=0;
+			for (var i=0; i<10; i++) {
+				number = parseInt(prompt("Input the "+ (i+1) + "number", "0"));
+				if (number > max) 
+				{
+					max = number;
+					count = i+1;
+				};
+			};
+		
+		// output the lagest 
+		document.write("In the number you input, the " + count+ " number is the Maximum number:" + max);
+	}
+	</script>
+
+</head>
+
+<body>
+<body>
+<h1> Welcome to Use Program to Find the Maximum</h1>
+<p> When the enter string is done, the program ends your input</p>
+<hr> 
+<input type="button" id="findmax" value="Press to input and find the max:" onclick="findMax();">
+</body>
+
+</html>
