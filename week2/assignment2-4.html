@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function smallest() {
+	
+        var number =parseInt(prompt("Please input the neumber(1..100) of integers you want to input:", "1"));   // the first numebr specify the total numebr of intergers
+        var values = new Array();
+       
+        for (var i=0; i < number; i++) {
+        	
+        	values[i] = parseInt(prompt("Please enter the " + (i+1) +" number:", " "));
+        };
+        document.write("You have enter " + number + " integers!");
+        values.min = function(value)    // find the minimun of the array
+        {
+        	return Math.min.apply(Math, value);
+        };
+        var smallest = values.min(values);
+        document.write("<br>The minimun value among the intergers you entered is ", smallest);
+	}
+
+	</script>
+
+</head>
+
+<body>
+<h1> This Program is to find the samlled in the number you input </h1>
+<p> Please notice the fist inetger you input is the total number you want to input </p>
+<hr>  <!-- --  -->
+<input type="button"  id="smallest" value="input some intergers and find the samllest" onclick="smallest();">
+
+</body>
+
+</html>
