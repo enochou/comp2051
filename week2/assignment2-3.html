@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Test Result </title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript"> 
+	function testResult() { 
+	
+	 var number = parseInt(prompt("Input an integer as the number of stuudnets", "0"));// the total number of students;
+	 var grades = new Array(); // create a new array to hold the user data
+    
+     for (var i=0; i< number; i++) {
+     
+     	var Result = parseInt(prompt("Please input the test Result of No " + i + " user","1"));
+    
+		while ( Result != 1 && Result !== 2)   {
+			Result = parseInt(prompt("Input error, please reinput the result (1 or 2) " + i + "user ", "1"));
+		}  	
+
+     	grades[i] = Result; 
+     };   // end for input
+     
+        var pass = 0; // count the total number of pass
+        var fail = 0; // count the total number of fail
+        for (var j =0; j<grades.length; j++) {
+        	if (grades[j] == "1") 
+        	{
+        		pass++ ;   // Add 1 to the counter
+        	}
+        	else 
+        	{
+        		fail++;
+        	}
+        };  // end for counting 
+      
+        var percent_pass = pass/number * 100;
+
+        // output the report 
+        document.write("A total of " + number + " stuudnets took the test!");
+		document.write("<br/> The total number of stuudnets who passed the exam was: " + pass + "!");
+		document.write("<br/> The total number of stuudnets who failed the exam was: " + fail + "!");
+		document.write("<br/> Analyzing the Result, it appears that a total of " + percent_pass.toFixed(2)+ " percentage passed");
+
+		if (percent_pass > 80 )
+          {
+          	document.write("<br/> Based on this result, you should seriously consider increasing the tuition!")
+          }
+          else
+           {
+           	document.write("<br/> Based on this result, you do not need to consider increasing the tuition!")
+          };
+      }
+       
+	</script>
+
+</head>
+
+<body>
+	<h1> This Program is for Realestate Test Brokerage Analysis </h1>
+	<p> Please input the results of each student</p>
+	<p> Please notice that a student should get a 1 if they passed the exam and 2 if they faied </p>
+	<hr> <!-- Input a rule for the-->
+	<input type="button" id="test" value="Enter Individual Results" onclick ="testResult();" />
+</body> 
+
+</html>
