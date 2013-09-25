@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function drawPatternA() {
+		document.write("A <br/>");
+
+		height = 10;  // Determine the desired height of the pyramid
+		width = 10;  // Determine the width of the pyramid
+		for (var h=0;  h<= height; h++)  // This loop deternins the height of the image
+		{
+			for (var w=0; w< h; w++)    //This loop is for width of each line
+			{
+				document.write("*");
+			};
+			document.write("<br/>");
+		};
+	}
+
+	function drawPatternB() {
+		document.write("B<br/>");
+		height = 10; 
+		width = 10;
+		for (var h = 0; h<=height; h++) {
+			for (var w = width; w > h; w--) {
+				document.write("*");
+			};
+			document.write("<br/>");
+		};
+	}
+
+	function drawPatternC() {
+		document.write("C<br/>");
+		height = 10;
+		width = 10;
+		for (var h=0; h<=height; h++) {
+			document.write("<pre>");
+			for (var ws=0; ws<h; ws++)    // write spaces
+				{
+					document.write(" ");
+				};
+			for (var wa=10; wa > h; wa--) // write asterisks
+			{
+				document.write("*");
+			};
+			document.write("</pre>");
+		};
+
+	}
+
+	function drawPatternD() {
+		document.write("D<br/>");
+		height=10;
+		width=10;
+		for (var h=0; h<=height; h++)  {
+			document.write("<pre>");
+			for ( var ws=width; ws > h; ws--)  //write spaces
+			{    
+			
+				document.write(" ");
+			};
+			for (var wa =0; wa < h; wa++)  // wriet asterisks;
+				{
+					document.write("*");
+				};
+				document.write("</pre>");
+		};
+	}
+
+	</script>
+
+</head>
+
+<body>
+<h1>This Program is for drawing asterisk pattern </h1>
+<hr>
+
+<input type="button" id="patternA" value="Press to Draw Pattern A" onclick="drawPatternA();">
+
+<input type="button" id="patternA" value="Press to Draw Pattern B" onclick="drawPatternB();">
+
+<input type="button" id="patternA" value="Press to Draw Pattern c" onclick="drawPatternC();">
+
+<input type="button" id="patternA" value="Press to Draw Pattern D" onclick="drawPatternD();">
+</body>
+
+</html>
