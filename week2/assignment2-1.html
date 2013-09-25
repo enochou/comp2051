@@ -1,0 +1,27 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Average Grade</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	var sum =0;  // sum the grades of all stuudnets;
+	 var number =10; // the total number of students;
+
+     for (var i=1; i<=number; i++) {
+     	var grade = parseFloat(prompt("Input the grade[0--100] of the No"+ i + " stuudnet"," "));
+     	sum += grade;
+     }
+       document.write("The average of grades is ", (sum/number).toFixed(2));
+	</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
