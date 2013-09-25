@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Average Grade</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	var sum =0;  // sum the grades of all stuudnets;
+	 var number = parseInt(prompt("Input an integer as the number of stuudnets", "0"));// the total number of students;
+   
+     for (var i=1; i<=number; i++) {
+     	var grade = parseFloat(prompt("Input the grade[0--100] of the No"+ i + " stuudnet"," "));
+     	while (grade < 0 || grade > 100) {     // repeat input if input is beond 0 and 100;
+              alert("Your input is beyond the limit, please input again");
+             grade = parseFloat(prompt("Input the grade[0--100] of the No"+ i + " stuudnet"," "));
+     	};
+     	sum += grade;
+     }
+       document.write("The average of grades is ", (sum/number).toFixed(2));
+	</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
