@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Layout</title>
+	<style type="text/css">
+
+	</style>
+
+	<script type="text/javascript">
+	function payrollCal() {
+		//document.write("begin test");
+		var numberA = new Array();  // three arraies for holding employee numbers, working hours andd hourly rate 
+		var hoursA = new Array();
+		var reteA = new Array();
+		var i=0; 					// track the number of employees 
+		var number = parseInt(prompt("Input the " + (i+1) + " employee's number","0"));
+		while (number != 0) {
+		var hours = parseFloat(prompt("Enter the working hours for the " + number + "employee", "0.0"));
+		var rate = parseFloat(prompt("Enter the rate for the " + number + "employee", "0.00"));
+		numberA[i] = number;
+		hoursA[i] = hours;
+		reteA[i] = rate;
+		i++;
+		number = parseInt(prompt("Input the " + (i+1) + "  employee's number","0"));
+		};
+		var payA = new Array();  // hold the gross pay for each employee
+		for (var j=0; j<i; j++)  // calcualte the gross pay for each employeee
+		{
+
+			payA[j] = parseFloat((hoursA[j] * reteA[j])).toFixed(2);   
+			
+			if (hoursA[j] > 40 ) {  
+			    document.write("asd");                     // calculate overwork pay
+				payA[j] = (Number(payA[j]) + Number((hoursA[j]-40)*reteA[j] *1.5)).toFixed(2);
+			};
+		};
+		// output the result;
+		document.write("<br>"+"Employee nmber" + "                 Gross pay");
+		for (var j=0; j<i; j++)
+		{
+		document.write("<br><pre>"+numberA[j] +"                        " + payA[j] +"</pre>");
+		};
+
+	}
+
+	</script>
+
+</head>
+
+<body>
+<h1> Welcome to Use the Payroll Program </h1>
+<p> Input Employee Number, working hours and hourly rate </p>
+<p> When employee number is 0, the program ends your input</p>
+<hr> 
+<input type="button" id="payroll" value="Press to input and calculate for pays straight times:" onclick="payrollCal();">
+
+
+</body>
+
+</html>
