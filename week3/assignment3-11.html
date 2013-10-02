@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+		function findperfect() {
+			var n = myform.n1.value;
+			var perA = new Array();   // create a array to hold the perfect number
+			var j=0; //trace the array;
+			for (var i=1; i<=n;i++) {
+               if (perfect(i) != 0) {   // i is perfect number
+               	perA[j] = i;
+               	j++;
+               };
+			};
+		//	writelog(perA.length);
+			for ( var i=0; i<perA.length; i++) {  // out put the perfect
+				writelog(perA[i]+ "  ");
+			}
+		}
+
+		function findprime() {
+			var n = myform.n1.value;
+			var primeA = new Array();
+			var k=0;  
+			for (var i=2; i<=n; i++) {  // calculate all prime
+				if (prime(i)) {
+					primeA[k] = i;
+					k++;
+				};
+			};
+			for (var i=0; i<primeA.length; i++) {  //output the result
+				writelog(primeA[i] + "  ");
+			}
+		}
+
+		function prime(n) {                 // determine if a numbe is a prime
+
+			for (var i=2; i<=Math.sqrt(n); i++) {
+				if (n%i == 0) {
+					return 0;
+				}
+			};
+			return n;
+		}
+         function perfect(n) {
+         	var factors = factor(n);  // find all factors;
+         	var sum=1;    // sum all the factors;
+         	for (var i=0; i<factors.length; i++) {
+         			sum += factors[i];
+         	};
+         	if (sum == n) {
+         			return n;    // return perfect number
+         	} else {
+         			return 0;   // 0 if n is not a perfect number;
+         	}
+         }
+
+		function factor(n)  // find all the factors of interger
+		{
+			var fac = new Array();
+			var k=0; // trace the array;
+
+			for (var i=2; i<=(n/2); i++) 
+			 {
+			 	if (n%i == 0) {
+			 		fac[k]=i;
+			 		k++;
+			 	}
+			}
+			return fac;
+		}
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result;
+		}
+
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			<p>Find the Perfect and Prime </p>
+			<p>Input the number you want to find the the maximum of range from 1 in order to find the perfect in this range </p>
+			<input  type="number"  id="n1"  name="n1" required />
+		
+			
+			<input type="button" name="button1" value="find perfect" onclick="findperfect();">
+			<input type="button" name="button2" value="fine prime"  onclick="findprime();">
+			
+	
+		</form>
+	 </section>
+     	  <div id="logger"> </div>
+	</body>
+
