@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+			function findGCD() {
+				var n1 = myform.n1.value;
+				var n2 = myform.n2.value 
+				var cd = GCD(n1,n2);
+				if (cd) {
+				writelog("The Common divisor of " + n1 + " and " + n2 + " is: "+ cd);
+			} else {
+				writelog("There is no common divisor of "+ n1 + " and " + n2);
+			}
+			//	writelog(n1);
+			//	writelog(n2);
+			}
+			function GCD(n1, n2) 
+			{   
+				var cd = 0;
+				var m = Math.min(n1,n2);
+				if ( n1 % m && n2 % m) {         // if n1 can be divided by n2, or vice versa, return m
+					return m;
+				}
+				for (var i=2; i<=m; i++) {
+					if (n1%i !=0 || n2%i !=0)  // m is not a GCD. continue
+						 {
+						 	continue;
+						 } 
+						 else {
+						 	cd = i;
+						 }
+				}
+				 return cd;
+
+			}
+				
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+			
+		}
+
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			<p>Find the common divisor </p>
+			
+			
+			<input  type="number"  id="n1"  name="n1" required />
+			<input  type="number"  id="n2"  name="n2" required />
+		
+			
+			<input type="button" name="button1" value="Largest Common Divisor" onclick="findGCD();">
+			
+	
+		</form>
+	 </section>
+     	  <div id="logger"> </div>
+	</body>
+
