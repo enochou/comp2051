@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Test for read from html1</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+		function calculate() {
+			var Area = CircleArea(myform.radius.value).toFixed(3);
+			writelog("The area of a cirle with radius " + myform.radius.value + " is " + Area);
+		}
+		function CircleArea(r)  {
+			return Math.PI*r*r;
+		}
+
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+		}
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			<p> Please input radius (number) <input type="number" min="0" name="radius" required id="rs" /></p>
+			<input type="button" name="button" value="Circle Area" onclick="calculate()">
+	
+		</form>
+	 </section>
+     	
+     <div id="logger"> </div>
+	</body>
+
