@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Parking Charge</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+		function calculate() {
+	     var charge = calculateCharge(myform.hours.value).toFixed(2);// get input and function call
+		 writelog("The Parking charge for "+ myform.hours.value+ " is: "+ charge);   // output the result;
+		}  
+
+		
+		function calculateCharge(parkinghours)  {  // parking charge calaculation function 
+		 	var charge = 2.00*parkinghours;
+			if ( parkinghours  > 3) {
+				charge += 0.5 *(parkinghours-3)
+			};
+			if (charge > 10.00 ) {
+				charge = 10.00;
+			};
+			return charge;
+		}
+
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+		}
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+		Please input your parking hours(number): <input type="number" min="0" max="24" name="hours" required id="time" />
+			<input type="button" name="button" value="Parking Charge" onclick="calculate()">
+	
+		</form>
+	 </section>
+     	
+     <div id="logger"> </div>
+	</body>
+
