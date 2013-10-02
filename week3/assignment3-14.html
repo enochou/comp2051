@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+			
+				function findQualityPoints() {
+					var average = myform.n1.value;
+					
+			       writelog("The qualityPoint of average "+ average+ " is:"+points(average));
+				}
+				function points(average) {
+					 if (average  == 100) return 4;
+					if (average < 60) return 0;
+					return parseInt((average-60)/10)+1;
+				}
+				
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+			
+		}
+
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			<p>Find qualityPoints </p>
+			
+			
+			<input  type="number"  min="0" max="100" id="n1"  name="n1" required />
+			 
+		
+			
+			<input type="button" name="button1" value="Find Points" 
+			  onclick="findQualityPoints();">
+			
+	
+		</form>
+	 </section>
+     	  <div id="logger"> </div>
+	</body>
+
