@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+			     function calpow() {
+			     	var base = myform.base.value;
+			     	var exp = myform.exp.value;
+			     	var p=pow(base,exp);
+
+			     	writelog("The Power of base " + base +  " exponent " + exp+" is " + p);
+			     }
+				
+			
+		function pow(a,b) 
+		{    
+			
+			if (b == 1) {
+			//	writelog("base = " + a+ " exponent = " + b );
+				p=a;
+				writelog("stack end:base = " + a + "exponent = " + b + "result: "+ p);
+				return p;
+			} 
+			else  { 
+			//	writelog("base = " + a+ " exponent = " + b );
+			    writelog("stack push: base = " + a + "exponent = " + b );
+				p= a*pow(a, b-1);
+				writelog(" stack pop: base = " + a + "exponent = " + b + "result: "+ p);
+				return p;
+				
+			} 
+		}
+		function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+		}
+
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			
+		 <input type="number" min="0" name="base" id="base" required>
+		 <input type="number" min="0" name="exp" id="exp"  required>
+
+		 
+		<input type="button" name="button" value="Power" onclick="calpow()">
+	
+		</form>
+	 </section>
+     	
+     <div id="logger"> </div>
+	
+			
+	
+		</form>
+	 </section>
+     	  
+	</body>
+
