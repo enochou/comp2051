@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+
+		function reservalNumber() {
+			var n1 = myform.num.value;  // get input 
+		//	writelog("test" + n1);
+			writelog("The reserval of "+ n1+ " is " +resval(n1));
+		}
+		
+		
+		function resval(number) {    // reservl an integer
+		//	writelog(number);
+			var str = number.toString();
+		//	writelog(str);
+			var rs="";
+			for (var i=str.length-1; i>=0; i--) 
+			{    
+              
+				rs  += str[i];
+			};
+			return rs;
+		}
+		
+	function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+		}
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform">
+			<p>Reveersal number</p>
+			<input  type="number"  id="n1"  name="num" required />
+			
+			
+			<input type="button" name="button" value="reserval number" onclick="reservalNumber()">
+	
+		</form>
+	 </section>
+     	  <div id="logger"> </div>
+	</body>
+
