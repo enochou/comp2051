@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+
+		<script type="text/javascript">
+		   var gr = 0;
+		   var Start = false;
+		function Guess() {
+			Start = true;
+			clearText();             // prepare the game , clear the tex area and div data
+			clearDiv();
+			writelog("Game Begin:");
+			gr = randomInt();
+		//	writelog("gr=" + gr);
+			
+		}
+
+		function submitNumber() {
+			// document.write("asd");
+		//	writelog("compare");
+			var gn = myform.textinput.value;   // get input value
+			//writelog(gn);
+			if (Start) {                     // to make sure first press the start game button;
+			if (gn > gr ) 
+				{ writelog("You input is " + gn + " Too high" );}    
+			
+			else if (gn < gr ) {
+				writelog("You input is " + gn + " Too lower" );
+			} else
+			    {   
+			    	
+			    	writelog("congratuation!, please press star game to begin a new one");
+			    	Start = false;
+			       
+			    }; 
+		}
+		else {
+			writelog("Pleae make sure to prsss start game button to begin a game");
+		}
+	}
+
+		function clearText(){            // clear input 
+           var Txt=document.getElementById("textinput"); 
+           Txt.value="";
+		}
+		function clearDiv() {       // clear Div
+			document.getElementById('logger').innerHTML = "";
+		}
+				function randomInt() {         // random generation function 
+				   return parseInt((Math.random()*1000)+1);   // random generate 
+				}
+				
+		function writelog(result) {         // output function 
+			document.getElementById("logger").innerHTML += result + '<br>';   
+		}
+			
+		
+		
+
+		</script>
+
+	</head>
+
+
+	<body>
+   <section>
+		<form name="myform" id="form1">
+			<p>Guess Game</p>
+		     <p1> Input Data </p1>
+	        <input type="text" id="textinput" name="textinput" onfocus="clearText()">
+	         <input type="button" name="Submit" value="Submit Data" onclick="submitNumber()">
+			 <input type="button" name="button1" value="Start Game" 
+			  onclick="Guess();">
+		</form>
+		
+	 </section>
+	 		<p1>OutPut</p1> <br>
+     	    <div id="logger"></div>
+	</body>
+
