@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+     <script type="text/javascript">
+     var i = 0;
+
+     function getvalue()    // a display value 
+     {  
+
+    //    writelog("qa");
+     	var  f= new Array();
+     	var nu1 = myform.num.value;
+     	f[i] = nu1;
+     	if (i == 6 ) {
+     		writelog("The seventth element is " + f[i]);
+     	};
+     	i++;
+     }
+     
+     function initArray() {        // initial array
+     writelog("asd");
+     	//var k =5;
+     //	var g = new Array(k);
+     //   p= new Array[2,3];
+        writelog(p.length);
+     //   t= new Array([0,0,0],[0,0,0]);
+        writelog("asdf");
+          
+        writelog(t);
+
+          g = defineA(5);
+     //	writelog("asd");
+     	initialA(g,8);
+     	writelog(g);
+    
+     }
+     function sumArray() {      //3 sum array
+     //	writelog("asd");
+     		g = defineA(100);
+     		initialA(g,10);
+     		writelog(sumA(g));
+     }
+     function copyArray() {
+     //	writelog("asd");
+     	var o = defineA(11);
+     	var na = defineA(34);
+         initialA(o, 9);
+         writelog(o);
+         initialA(na,100);
+         writelog(na);
+         copyA(o,na);
+         writelog(na);
+     }
+     function initAt() {
+        var t = new Array([],[]);
+     
+        for (var i=0; i<=1; i++) 
+        {  
+         
+            for (var j=0; j<=2; j++)
+            {    
+               
+                t[i][j] = randomN(100,1);
+               
+            //    writelog(t);
+            };
+        };
+             writelog(t);
+            return t;
+     }
+     function smallest() {
+      //  writelog("asd");
+        var t = new Array([],[]);
+        t = initAt();
+        var min =Math.min(fmin(t[0]), fmin(t[1]));  
+        writelog("The minun is "+ min);
+     }
+     function firstrow() {
+        var t= initAt();
+       //   writelog(t);
+        writelog(outA(t[0]));
+     }
+     function thirdcol()
+     {
+        var t =initAt();
+      //  writelog(t);
+
+        var su= t[0][2] + t[1][2];
+        writelog("sum =" + su);
+     }
+     function printtable() {
+             var t = initAt();
+             writelog("<br>");
+            document.write('<table width = "25%" border = "1">') // create the table;
+            
+            document.write('<tr>');
+        document.write('<td width = "120">' +  + ' row </td>');
+        for (j = 0; j< 3; j++) 
+        {
+        document.write('<td width = "120">'+" col " + j +'<td>');
+    };
+        for (var i=0; i<2;i++) {
+        document.write('<tr>');
+        document.write('<td width = "120">' + i + ' row </td>');
+        for (j = 0; j< 3; j++) 
+        {
+        document.write('<td width = "120">'+ t[i][j] +'<td>');
+    }
+        //document.write('</tr>');
+    };
+    document.write('</table>');
+    writelog("<br>");
+ }
+     function copyA(a, b) // copy A TO B
+     {  // writelog("copy");
+     	for (var i =0; i < Math.min(a.length, b.length); i++)
+     		{ 
+     			b[i] = a[i];
+     		}
+     } 
+     
+     function findMaxMinArray()  // find maximum and mimium of an array
+     {  
+     //	writelog("asd");
+     	var g = defineA(99);
+    	initialArandom(g);
+    	// writelog(g);
+         fmax(g);
+      //   fmin(g);
+    //    fMax(g);
+        writelog("The maximum of the arryy is " + fmax(g));
+      	writelog("The mimium of the array is " + fmin(g));
+     }
+     function fmax(a) {
+      //  writelog("asd1");
+        var max = a[0];
+        for (var i =1; i < a.length; i++) 
+        {
+            if (a[i] > max ) {
+                max = a[i];
+            };
+        };
+        return max;
+     }
+       function fmin(a) 
+       {
+      //  writelog("asd2");
+        var min = a[0];
+        for (var i =1; i < a.length; i++) 
+        {
+            if (a[i] < min ) {
+                 min = a[i];
+            }
+        }
+        return min;
+       }
+
+       
+            
+
+       /*** 
+        for (var i = 0; i < arr.length; i++) 
+        {
+           
+           if (arr[i] instanceof Array) 
+            { 
+               
+                 writelog("asd");
+                 writelog(arr[i].length);
+                 
+                
+                for (var j = 0; j < arr[i].length; j++) 
+                {
+                    writelog("temp="+temp.length);
+                     temp.push(arr[i][j]);
+                }   
+            }
+        }  
+        if (temp.length) {
+            
+            dimen[count] = temp.length;
+            writelog("dem       " + dimen[count]);
+            count =1;
+            count += getCountdimension(temp);
+        }
+           return dimen;
+       } **/
+
+     function clearvalue() 
+     {   
+     	document.getElementById('num1').value ="";
+     }
+       
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br>';
+		}
+	 function outA(a) 
+	 {   //   writelog("a+++"+a.length);
+	 	for (var j=0; j< a.length; j++) {
+	 		writelog(a[j]);
+          //  writelog("j="+ j);
+	 	}
+	 }
+	  function initialA(a, n) {
+	 //  	writelog("asdinit");
+	  	for (var i = 0; i < a.length ; i++)
+	  	{    
+	  		a[i] = n;
+	  	}
+	  	return a;
+	  }
+	  function initialArandom(a) {
+	 //  	writelog("asdinit");
+	  	for (var i = 0; i < a.length ; i++)
+	  	{    
+	  		a[i] = randomN(10000,3);
+	  	}
+	  	return a;
+	  }
+	  function sumA(a) {
+	  	var sum = 0;
+	  	for (var i =0; i<a.length; i++) {
+	  		sum += a[i];
+	  	}
+	  	return sum;
+	  }
+	  function defineA(n) {
+	//  	writelog("de");
+	  	return new Array(n); // 
+	  }
+	  function randomN(n,precision) {
+	  //	  writelog("begin reandom");
+	  	   return (Math.random()*n+1).toFixed(precision);
+
+	  }
+     </script>
+
+	</head>
+
+
+	<body>
+     <p>  Input Part </p>
+     <form name="myform">
+      <p> 1 Input for an array</p>
+     <input type="text" name="num" id="num1" value=" " onblur="getvalue()" onfocus="clearvalue()" >
+     <br>
+      <input  type="button" value="2: initArray" onclick="initArray()">
+      <br>
+      <input  type="button" value="3: Sum Array" onclick="sumArray()">
+      <br>
+      <input  type="button" value="4: copy Array" onclick="copyArray()">
+      <br>
+      <input  type="button" value="5: fimd max or min of  Array" onclick="findMaxMinArray()">
+      <p> h: t has 2 rows </p>
+      <p> l: t has 3 columns          </p>
+      <p> j: t has six elements</p>
+      <p> k: t[1][0], t[1][1], t[1][2] </p>
+      <p> l: t[0][2], t[1][2] </p>
+      <p> m:t[0][1] = 0</p>
+      <p> n:t= new Array([0,0,0],[0,0,0]);</p>
+      <br>
+      <input type="button" value="o:Initail two deminioanl  Array" onclick="initAt()">
+      <br>
+      <input type="button" value="p: find the smallest vale" onclick="smallest()">
+      <br>
+      <input type="button" value="q: print the first row()" onclick="firstrow()">
+
+       <br>
+      <input type="button" value="r: sum of the third col ()" onclick="thirdcol()">
+      <br>
+      <input type="button" value="s: print table" onclick="printtable()">
+	 </form> 
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
+
