@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+     <script type="text/javascript">
+      var num = new Array(20);
+      var k =0; 
+      var count = 0;
+      function calculate() {
+      	
+      	var n = myform.num.value;	
+      	count++ 
+      	if (count == 20 ) {
+      		alert("you have inout 20 numbers");
+      	}
+      	if ( notfindin(n)) {
+      		num[k] = n;
+      		k++;
+      		writelog("the different number is: " + n);
+      	}
+      }
+      function notfindin(n) {
+      	// writelog("begin findin");
+      	for (var i =0; i<k; i++) {
+      	//	writelog("loop" + i);
+      		if (n == num[i] ) { return false;}
+      	}    
+      	return true;
+      }
+       
+      function cleartext() {
+      	document.getElementById("num1").value = "";
+      }
+       
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+     </script>
+
+	</head>
+
+
+	<body>
+     <p>  Input Part </p>
+     <form name="myform">
+     <input type="number" min="0" id="num1", name ="num" onblur="calculate();" onfocus="cleartext();">
+     </form>
+
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
