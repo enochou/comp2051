@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+     <script type="text/javascript">
+
+       function initialA()
+        {
+        	//  writelog("in");
+      var sales= initAt(3,5);
+      for (var row in sales) {
+      	for (var col in sales[row]) {
+
+      		sales[row][col] = 0;
+      		writelog("row  " + row + "col  " + col);
+      	}
+      }
+       writelog(sales);
+  }
+      
+        function initAt(l,c) {
+           var t = new Array();
+        for (var i=0; i<=l; i++) 
+        {  
+              t[i] = new Array();            
+            for (var j=0; j<=c; j++)
+            {    
+               
+               t[i][j] = 1;
+            //    writelog(i + j);
+               
+            //    writelog(t);
+            };
+        };
+            // writelog(t);
+            return t;
+     }
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+     </script>
+
+	</head>
+
+
+	<body>
+     <p>  Click to initiate </p>
+     <form name="myform">
+     <input type="button"  id="num1", name ="num" onclick="initialA();">
+     </form>
+
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
