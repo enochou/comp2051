@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+	</style>
+     <script type="text/javascript">
+
+       var n1 =0;
+       var n2 =0;
+       var firstpoin1 =0;
+       var firstpoin2 = 0;
+       var player1first = true;
+       var player2first = true;
+       var gameover = false;
+       var win1 =0;
+       var lose1 = 0;
+       var win2 =0;
+       var lose2 =0;
+       var turn = 0;  // nobodu begin 1: player1 2: player2
+       var k = 0; // trace the numbers of games
+       	var result1 = new Array(0,0);   // recoord palyer 1;
+       	var result2 = new Array(0,0);  // record player 2;
+       	var s1 =0; 
+       	var s2 = 0; 
+       	var state = 0;   //  process control;
+       function crapGame() 
+       {
+       	writelog("begin game");
+
+       	win1 = 0;
+       	lose2 =0;
+       	win2 =0;
+       	lose1 = 0;
+       	player1first = true;
+       	player2first = true;
+       	s1 =0;
+       	s2 =0;
+   //    	k=0;
+       	gameover=false;      // a new game
+       	clearDiv();
+       //	var k=0;
+      // 	var turn= 0; 
+       	
+         if (randomN(10) % 2 )  
+            {
+            	turn = 1;          // palyer 1;
+            	writelog("The first player can start the game");
+            }  else
+            {
+            	turn =2;  
+            	writelog("The second player can start the game");          // play 2;
+            }                         // decide who will be first 
+            if (state) {
+
+
+         	//writelog("main k===="+ k);
+         //	resultArr();
+         	      // prepare for next game
+
+         }
+       }
+      
+       
+       function endGame() { 
+
+       	    clearDiv();
+		//	writelog("end k===="+k);
+		//	writelog("win1  " + win1 + "lose1  " + lose1 );
+		//	writelog("win2  " + win2 + "lose2  " + lose2 );
+  
+         
+         for (var row = 0; row <k; row++ ) 
+         	for (var col =0; col < 2; col++) 
+         	{
+         		writelog("The palyer1  "  +  result1[row][col]);
+         		
+         	}
+         	for (var row = 0; row <k; row++ ) 
+         	for (var col =0; col < 2; col++) 
+         	{
+         		
+         		writelog("The palyer2  " + result2[row][col]);
+         	}
+         
+       }
+       function resultArr() {
+       	    result1[k] = new Array();
+         	result1[k][0]= win1;
+         	result1[k][1] = lose1;
+         	result2[k] = new Array();
+         	result2[k][0] = win2;
+         	result2[k][1] = lose2;
+            k++;
+       }
+
+       function player1()
+        { 
+       //  writelog("begin ")
+       // writelog("begin Game")
+         if (turn !=1 || gameover == true) 
+         {
+          writelog("It's noy your turn");
+         } else
+
+         if (player1first) 
+       
+         {
+          firstpoint1=randomN(6)+randomN(6);
+         player1first = false;
+          if ((firstpoint1 == 7) || (firstpoint1 == 11)) 
+          {
+          	gameover = true;
+          	win1 = 1;
+          	lose1= 0;
+          	lose2 =1;
+          	win2 = 0;
+          	state =1;
+          	resultArr();
+          	writelog("a:play1 is winner  " );
+        //  	writelog("1  " + firstpoint1+ "win1 = " + win1 + " lose1 =" + lose1);
+          } else
+         if ((firstpoint1 ==2) || firstpoint1 == 3 || firstpoint1 == 12) {
+         	gameover = true;
+         	lose1 =1;
+         	win1 = 0;
+         	win2 = 1;
+         	lose2 = 0;
+         	state = 1;
+         	resultArr();
+         	writelog("b: Player1 is loser");
+      //   	writelog("2  " + firstpoint1 + "win1 = " + win1 + " lose1 =" + lose1);
+         }  else
+         	{
+         		gameover = false;
+         	 	s1++;
+  
+         	 	turn =2;   // palyer2 can play now
+         	 	writelog("palyer2 can play now...")
+         	} 
+         	}  else  
+         	  if (!gameover) {
+          var point1 = randomN(6) + randomN(6);
+         	 if (point1 == 7) {
+         	 	gameover = true;
+         	 	lose1 += s1;
+         	 	win1 = 0;
+         	 	win2  += s2;
+         	 	lose2 = 0;
+         	 	state = 1;
+         	 	resultArr();
+         	 	writelog("c:Player1 is loser");
+         	// 	writelog("3  " + point1 + "win1 = " + win1 + " lose1 =" + lose1);
+         	 } else 
+         	 if (point1 == firstpoint1) {
+         	 	gameover = true;
+         	 	win1 += s1;
+         	 	lose1 =0;
+         	 	lose2 += s2;
+         	 	win1 = 0;
+         	 	state =1;
+         	 	resultArr();
+         	// 	writelog("3  " + point1 + "win1 = " + win1 + " lose1 =" + lose1);
+         	 	writelog("d:palyer1 is winner");
+         	 } else 
+         	 {
+         	 	gameover = false;
+         	 	s1++;
+         	 	turn =2;   // palyer2 can play now
+         	// 	writelog("3  " + point1 + "win1 = " + win1 + " lose1 =" + lose1);
+         	 	writelog("palyer2 can play now...")
+         	 }
+         }
+
+         
+     }
+
+     function player2()
+        { 
+         writelog("begin ")
+       // writelog("begin Game")
+         if (turn !=2 || gameover == true ) 
+         {
+          writelog("It's noy your turn");
+         } else
+
+         if (player2first) 
+         {
+          firstpoint2=randomN(6)+randomN(6);
+          player2first = false;
+          if ((firstpoint2 == 7) || (firstpoint2 == 11)) 
+          {
+          	gameover = true;
+          	win2 = 1;
+          	lose2 =0;
+          	lose1 =1;
+          	win1 = 0;
+          	state =1;
+          	resultArr();
+          	writelog("0: paly2 is winner");
+          } else
+         if ((firstpoint2 ==2) || firstpoint2 == 3 || firstpoint2 == 12) {
+         	gameover = true;
+         	lose2 =1;
+         	win2 = 0;
+         	win1 =1;
+         	lose1 =0;
+         	state =1;
+         	resultArr();
+         	writelog("a:play2 are loser");
+         }  
+          
+           else {
+               
+              gameover = false;
+              s2++;
+              turn =1; 
+              writelog("player1 can play now");
+         }
+     }
+         else 
+         if (  !gameover) {
+         	var  point2 = randomN(6) + randomN(6);
+         	 if (point2 == 7) {
+         	 	gameover = true;
+         	 	lose2 += s2;
+         	 	win2 = 0;
+         	 	win1  +=s1;
+         	 	lose1 = 0;
+         	 	state = 1;
+         	 	resultArr();
+         	 	writelog("b:play2 is loser");
+         	 } else 
+         	 if (point2 == firstpoint2) {
+         	 	gameover = true;
+         	 	win2 += s2;;
+         	 	lose2 =0;
+         	 	lose1 +=s1;
+         	 	win1 = 0;
+         	 	state =1;
+         	 	resultArr();
+         	 	writelog("c:palsy2 is winner");
+         	 } else 
+         	 {
+         	 	gameover = false;
+         	 	s2++;
+         	 	turn =1;   // palyer1 can play now
+         	 	writelog("palyer1 can play now...")
+         	 }
+         }
+
+         }  
+     
+ 			
+ 		
+
+      
+        function randomN(n) {
+	  //	  writelog("begin reandom");
+	  	   return parseInt((Math.random()*n+1));
+
+	  }
+	  function clearDiv() {       // clear Div
+			document.getElementById('logger').innerHTML= "";
+		}
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+     </script>
+
+	</head>
+
+
+	<body>
+	<section>
+     <p>  Click to initiate </p>
+     <form name="myform">
+     <p> One by One </p>
+     <input type="button"    value ="begin a new game"  onclick="crapGame();">
+     
+     <input type="button"  value="the first player"  onclick="player1()">
+     <input type="button"  value="the second player"   onclick="player2()">
+     <input type="button"    value="end the whole game"  onclick="endGame();">
+      <hr>
+      
+     </form>
+ </section>
+
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
