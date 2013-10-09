@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+  <title>Game</title>
+	<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+	</style>
+     <script type="text/javascript">
+      var r= new Array(81);
+         // tract the position 
+      var  tp =1;
+      var hp = 1;
+      var hp1 =1;
+      var tp1 =1;
+    //  var terminate =0;
+      var result =""
+      var t = null;
+
+      for (i =1; i <=80; i++) {
+        r[i] ="";
+      };
+
+      function Game() {
+        writelog('bdgin');
+
+        t =setInterval("move()", 1000);
+
+      }
+
+      function move() {
+          // var tp1 =1;
+          // var hp1 =1;
+            tp1 += tRule(randomN(10));
+            hp1 += hRule(randomN(10));
+           tp = md(tp1);
+           hp = md(hp1);
+           r[hp] = "H";
+           r[tp] ="T"
+           result = decision(hp,tp);
+        writelog("tp(tortoise position)= "+ tp + "  hp(hare position)= "+ hp);
+          writelog(result);
+        if (tp == 80  || hp == 80)  {
+     //     writelog("test... exit")
+          window.clearInterval(t);
+        }
+      }
+    function watchGame() {
+      for (var i =1; i<=80; i++)
+        writewatch(r[i]);
+    }
+
+       function tRule(i) {
+         if ( i<=5 && i>=1) {
+          tmove =3;
+         };
+          if (i == 6 || i ==7) {
+            tmove = -6;
+         };
+         if ( i == 8 || i ==9 || i == 10) {
+          tmove = 1;
+         };
+         return tmove;
+       }
+
+       function hRule(i) {
+        if ( i ==1 || i ==2) {
+          hmove = 0;
+        };
+        if (i == 3 || i == 4) {
+          hmove = 9
+        };
+        if (i == 5) {
+          hmove = -12
+        };
+        if (i == 6 || i == 7 || i ==8 ) {
+          hmove = 1
+        };
+        if (i ==9 || i == 10) {
+          hmove = -2
+        };
+        return hmove;
+       }
+       function md(p) {
+     //   writelog("md decision p = " + p);
+        var q = p;
+        if (q > 80)  
+        {
+          q = 80;
+        }
+        else if ( q  < 1) 
+        {
+          q =  1;
+        }
+        return q;
+       }
+      function decision(tp, hp)  {
+        var str =""
+
+        if (tp == hp) {
+          if (hp == 80) {
+               str =" tie";
+          } 
+          else {
+            str = "Ouch";
+          }
+        }
+        else if ( tp == 80)
+        {      
+          
+              str = "tortoise win"
+        } else if (hp == 80) 
+        { str ="hare win"
+           };
+
+        return str;
+      }
+
+        function randomN(n) {
+	  //	  writelog("begin reandom");
+	  	   return parseInt((Math.random()*n+1));
+
+	  }
+	  function clearDiv() {       // clear Div
+			document.getElementById('logger').innerHTML= "";
+		}
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+  function writewatch(result) {
+      document.getElementById("watch").innerHTML += result ;
+    }
+    
+     </script>
+
+	</head>
+
+
+	<body>
+	<section>
+     <p>  Play and Watch a Game </p>
+     <form name="myform">
+    
+     <input type="button"    value ="begin a new game"  onclick="Game();">
+     <input type="button"    value ="Watch State of the game"  onclick="watchGame();">
+     
+     </form>
+ </section>
+
+    
+     <div id="logger"></div>
+     <div id="watch"></div>
+     
+
+	</body>
+
+</html>
