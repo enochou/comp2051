@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+     <script type="text/javascript">
+
+
+       function diceGame()
+        { 
+
+       // writelog("begin Game");
+        var count = new Array(13);
+         
+        for ( var i=0; i<18000; i++) 
+        {
+        	count[i] =0; 
+        }
+        for ( var i=0; i<18000; i++)
+ 			{
+           count[randomN(6)+randomN(6)]++;
+ 			}
+ 		for (var i=2; i<=12; i++)  
+ 		{
+ 			writelog("The occured number " + i + "is" + count[i]);
+ 		}
+  } 
+
+      
+        function randomN(n) {
+	  //	  writelog("begin reandom");
+	  	   return parseInt((Math.random()*n+1));
+
+	  }
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+     </script>
+
+	</head>
+
+
+	<body>
+     <p>  Click to initiate </p>
+     <form name="myform">
+     <input type="button"  id="num1", name ="num"  value ="begin game" onclick="diceGame();">
+     </form>
+
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
