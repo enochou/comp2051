@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ch 8</title>
+<style type="text/css">
+body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+</style>
+
+<script type="text/javascript">
+   var emp = new Array([],[]) 
+   var employee = 4;
+   var product =5;
+   var i =0;
+   var j=0;
+   var flag = 0;
+
+   for (var i= 0; i< employee+1; i++) {
+   	emp[i] = new Array();
+   	for (var j=0; j< product+1; j++) {
+   	emp[i][j] = 0;
+   }
+}
+
+   function readData() {
+   	employee = myform.employees.value;
+   	product = myform.products.value;
+   	writelog("begin readData");
+   	writelog(employee);
+   	writelog(product);
+   }
+
+   
+   function inData() {
+   	writelog("begin inData");
+     
+     var k = myform.eid.value;
+     var i = myform.pid.value;
+     var sale= myform.sid.value;
+     emp[k] = new Array();
+     writelog(k+ "   "+ i+ "    " + sale);
+ 		emp[k][i] = sale;
+ 	writelog("emp" + sale);
+
+   }
+   
+  
+  function outPuttab() {
+  				calculate();
+         	var t= document.createElement('table');
+         	for (var i = 0; i< 4; i++ ) {
+         		var r = t.insertRow(0);
+         		for (var j =0; j< 5; j++) {
+         			var c = r.insertCell(0);
+              if (typeof(emp[i][j])) {
+                c.innerHTML =0;
+              } else
+              {
+         			c.innerHTML =emp[i][j];
+            }
+         		}
+         	}
+         	document.getElementById('table1').appendChild(t);
+         	t.setAttribute('border','1');
+         }
+   
+   function calculate() {
+      for (var i= 0; i< employee; i++) {
+   	for (var j=0; j< product; j++) {
+   	emp[i][product] += emp[i][j];
+   	}
+   };
+    for (var i= 0; i< employee; i++) {
+   	for (var j=0; j< product; j++) {
+   	emp[employee][j] += emp[i][j];
+   	}
+   };
+   }
+
+          	
+function clearText(){            // clear input 
+           var Txt=document.getElementById("textinput"); 
+           Txt.value="";
+		}
+		
+function clearDiv() {       // clear Div
+			document.getElementById('logger').innerHTML = "";
+		}
+function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+
+</script>
+
+</head>
+<body>
+  <form name="myform">
+  	<section>
+     <p>  SMS System</p>
+     <p1> Input then number of employes and products <p1>
+     <input type="number" name="employees" min="0" id="employees" >
+     <input type="number" name="products"  min="0" id="product" >
+     <input type="button" name="submit"  onclick="readData()"> 
+     
+     <hr>
+     <p1> Input Data for each employee about sales <p1>
+     	
+     <input type="number" name="eid" min="0"  id="eid" >
+     	
+     <input type="number" name="pid" min="0"  id="pid" >
+     <input type ="number" name="sid
+     " min="0" id="sid">
+     <input  type="button" name="submit" onclick="inData()">
+     <hr>
+     <p1> print the table <p1>
+     <input type="button" name="output"  onclick="outPuttab()">
+ 
+  	</section>
+
+  </form>
+   
+  <div id="logger"></div>
+  <div id="table1" style="border: lpx solid black">
+</div>
+</body>
+</html>
+
