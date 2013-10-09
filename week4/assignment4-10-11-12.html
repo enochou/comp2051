@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+		<title>Check Mutiply</title>
+		<style type="text/css">
+		body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+		</style>
+	<SCRIPT TYPE="text/javascript">
+       
+       var nu = new Array();
+
+       
+       function prime() {
+         
+       for (var i =0; i< 100000;i++) 
+       {
+       	nu[i] =1;
+      // 	writelog("initiate");
+       }
+       nu[0] =0;
+       nu[1] =0;
+     //  writelog(nu.length);
+
+       for ( var i=2; i<nu.length; i++) 
+       {       
+           if (nu[i] == 1) {
+       	for (var j= 2*i; j<nu.length; j++) {
+      //    writelog("inner looper");
+       		if ( (j % i) == 0 )
+       			{ nu[j] =0; }
+       	}
+       }
+   }
+       for (var i=2; i<nu.length; i++) {
+       		if (nu[i] !=0 ) {
+
+       			writelog(i);
+       		}
+       }
+}
+
+
+       function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"  " ;
+		}
+	</SCRIPT>
+
+</head>
+
+<body>
+     <p>  Click to Start </p>
+     <form name="myform">
+     <input type="button"  id="num1", name ="num"  value ="prime()" onclick="prime();">
+     </form>
+
+
+     <div id="logger"></div>
+     
+
+</body>
+
+
+
+</html>
