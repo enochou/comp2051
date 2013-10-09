@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset ="utf-8">
+     <script type="text/javascript">
+     
+      function setZero() {
+        var counter = defineA(15);
+        for (var i =0; i<10; i++)
+        {
+            counter[i] =0;
+        }
+        writelog(counter);
+    //  writelog("ser Ok");
+      }
+      function addOne() {
+        var bonus = defineA(15);
+    //  writelog("begin1");
+        bonus = initA(bonus,15, 100, 2);     // initial for test
+        writelog(bonus);
+        for (var i =0; i< bonus.length; i++) 
+        {
+            bonus[i]++;
+        };
+        writelog(bonus);
+      }
+      function displayFive() {
+        var k = 0;
+        writelog("displayFive is ok");
+        var score = defineA(10);
+        score = initA(score, 20, 100, 0);
+        writelog(score);
+     //writelog("asd");
+       var best = new Array(5);
+   //  best.length=0;
+       for (i=0; i< best.length; i++) 
+       {
+    //  writelog("behin loop");
+
+        k=fmax(score);
+   //   writelog("k="+ k);
+        best[i] = score[k];
+        score[k] =-1;
+       }
+         document.write("The five max is: ");
+        for (i=0; i< best.length; i++)  {
+            document.write(best[i] + "   ");
+        }
+      //  writelog("best"+ best);
+
+      }
+     
+     function initA(a, n, num, precision) {
+        for (var i=0; i< Math.min(n,a.length); i++)
+        {
+            a[i] = randomN(num,precision);
+        }
+        return a;
+     }
+     function fmax(a) {
+      //  writelog("asd1");
+        var k =0;
+        var max = a[0];
+        for (var i =1; i < a.length; i++) 
+        {
+            if (parseInt(a[i]) > parseInt(max)) {
+                max = a[i];
+                k = i;
+            };
+        };
+    //    writelog("max"+ max);
+     //   writelog("k=" + k);
+        return k;
+     }
+       
+
+     
+       
+     function writelog(result) {
+			document.getElementById("logger").innerHTML += result + '<br> ';
+		}
+	
+	  
+	 
+	  function defineA(n) {
+	//  	writelog("de");
+	  	return new Array(n); // 
+	  }
+	  function randomN(n,precision) {
+	  //	  writelog("begin reandom");
+	  	   return (Math.random()*n+1).toFixed(precision);
+
+	  }
+     </script>
+
+	</head>
+
+
+	<body>
+     <p>  Input Part </p>
+     <form name="myform">
+      
+      <input  type="button" value="a: set 10 elements to zeros" onclick="setZero()">
+      <br>
+      <input  type="button" value="b: Add one to 15 elements " onclick="addOne()">
+      <br>
+      <input  type="button" value="c: Display the five best" onclick="displayFive()">
+      <br>
+      
+	 </form> 
+
+     <div id="logger"></div>
+     
+
+	</body>
+
+</html>
+
