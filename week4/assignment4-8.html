@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ch 8</title>
+<style type="text/css">
+body {
+        width: 95%;
+        margin: 1em;
+        font-family: "Komika Hand", sans-serif;
+  		 }
+  		 input {
+  		 	 display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  red;
+  		 }
+  		 div {
+        display: inline-block;
+        position: relative;
+        margin: 1em;
+        padding: 1em;
+        outline: 4px  solid black;
+    	}
+</style>
+
+<script type="text/javascript">
+     var flight = new Array(10);
+     for (var i =0; i< flight.length; i++) {
+     	flight[i] =0;
+     }
+
+function ticket() {
+          writelog("begin");
+          var nu = myform.seat.value;
+          if (nu == 1)   // first class 
+          {
+          	var  j =1;
+          	 while ( j <=5 ) {
+          		if  (!(flight[j])) {
+          			flight[j] =1;
+          		writelog("  Boarding Pass First Class  ");
+          		writelog("    seat num        "  + j );
+          		break;
+          		}
+          		j++;
+          	}
+          	if (j > 5) {
+          		writelog("If you want to order Economy seat, please type 2:")
+          	}
+
+          }
+          else {
+          	var j = 6;
+          	while (j <= 10 ) {
+          		if  (!(flight[j])) {
+          			flight[j] =1;
+          		writelog("  Boarding Pass Economy Class  ");
+          		writelog("  seat num        "  + j );
+          		break;
+          		}
+          		j++;
+
+          	}
+          	if ( j > 10) {
+          		writelog("If you want to order Economy seat, please type 1:")
+          	}
+
+          }
+}
+function clearDiv() {       // clear Div
+			document.getElementById('logger').innerHTML = "";
+		}
+function writelog(result) {
+			document.getElementById("logger").innerHTML += result+"<br>" ;
+		}
+</script>
+
+</head>
+<body>
+  <form name="myform">
+  	<section>
+     <p>  Airline Ticket Order</p>
+     <h2> Input 1 for "FIRST Class"</h2>
+     <H2>Input 2 for "Economy" </H2>
+     <input type="number" name="seat" min="1" max="2" id="seat" onfocus="clearDiv();" onclick="ticket();">
+ 
+  	</section>
+
+  </form>
+   
+  <div id="logger"></div>
+</body>
+</html>
+
