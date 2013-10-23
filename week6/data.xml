@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<List> 
+<Entry  name="John"> 
+<Email  address="jone@yahoo.com"></Email> 
+</Entry> 
+<Entry  name="Dog">  
+<Email  address="Do@yahoo.com"></Email> 
+</Entry> 
+<Entry   name="Geese"> 
+<Email  address="ge@yahoo.com"></Email> 
+</Entry> 
+</List> 
