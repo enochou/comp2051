@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>MyHtml.html</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript">
+     var email="";
+     var email_ckeck=false;
+     function formsubmit() {
+    //	 alert("begin");
+    	var name =String(myform.name.value);
+    //    document.writeln((name));
+    
+        if (name == "") {
+        alert("name is null, please re-enter")}
+    	
+    	var comment = String(myform.comment.value);
+    //	document.writeln(comment);
+      
+    	if (comment == "") {
+    	alert("Comment is null, please enter")
+    	}
+    	var email = String(myform.email.value);
+    //	document.writeln(email);
+    	if (!isEmail(email)) {
+    	alert("email is wrong")
+    	  }
+    	  check_email();
+    	  if (email_check ) {
+    	  alert("email repeated !!!")
+    	  }
+    	  
+    	
+    }
+     
+     function isEmail(strEmail) {
+         if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)
+         return true;
+             else
+         return false;
+}
+
+var req=null;
+var console=null;
+var READY_STATE_UNINITIALIZED=0;
+var READY_STATE_LOADING=1;
+var READY_STATE_LOADED=2;
+var READY_STATE_INTERACTIVE=3;
+var READY_STATE_COMPLETE=4;
+
+function loadXMLDoc(url) {
+    if (window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (req) {
+        req.onreadystatechange = processReqChange();
+        req.open("GET", url, true);
+        req.send(null);
+    }
+
+}
+
+function processReqChange(){
+  var ready=req.readyState;
+  var data=null;
+  if (ready==READY_STATE_COMPLETE){
+   var responsexml=req.responseXML;
+var list=responsexml.getElementsByTagName("List")[0];
+  document.writeln(list.childNodes.length);
+
+
+ for (var i =1; i<list.childNodes.length; i++)
+ {
+var entry=list.childNodes[i]; 
+ var fileEmail = entry.childNodes[1].getAttribute("address").toString().trim(); 
+  i++;
+  var emailc = email.trim();
+ if (fileEmail.length == email.length && fileEmail.toLowCase() == email.toLowerCase()) {
+     return true;
+ }
+}
+  }
+}
+
+  function check_email() {
+  loadXMLDoc("data.xml");
+  }
+    </script>
+
+  </head>
+  
+  <body>
+  <form name="myform">
+  <h1> Feedback Form <br/></h1>
+  <h2>Please Fillout this form to help us imporve out site <br/></h2>
+  <h3>name <input type="text" id="name" name="name" /> <br/></h3>
+  <h3>comment:</h3>
+   <h3> <input type="text" id="comment" name="comment" /> </h3>
+  <h3>Email Address <input type="text" id="email" name="email" /></h3>
+  <h3>Thing You like</h3>
+  <H4><label for="checkbox1">Site Design </label>
+  <input type="checkbox" name="checkbox1" id="checkbox1"/>
+  <label for="checkbox2">Links</label>
+   <input type="checkbox" name="checkbox2" id="checkbox2"/>
+   <label for="checkbox3">Ease of use</label>
+   <input type="checkbox" name="checkbox3" id="checkbox3"/>
+   <label for="checkbox4">Image</label>
+   <input type="checkbox" name="checkbox4" id="checkbox4"/>
+   <label for="checkbox5">Source Code</label>
+   <input type="checkbox" name="checkbox5" id="checkbox5"/>
+  </H4>
+  <h3>How did you get to our site?</h3>
+  <label for="getradio1">Search Engine</label>
+  <input type="radio" id="getradio1" name="getradio" >
+  <label for="getradio2">Link form another site</label>
+  <input type="radio" id="getradio2" name="getradio"/>
+  <label for="getradio3">Deitel.com Website</label>
+  <input type="radio" id="getradio3" name="getradio"/>
+  <label for="getradio4">Reference in a</label>
+  <input type="radio" id="getradio4" name="getradio"/>
+  <label for="getradio5">Other</label>
+  <input type="radio" id="getradio5" name="getradio"/>
+  <br/>
+  <br/>
+  
+  Rate Outsite <select>
+  			<option selected >Amazaing </option>
+  			<option>Amazing</option>
+  			<option> 10 </option>
+  			<option>9</option>
+  			<option>8</option>
+  			<option>7</option>
+  			<option>6</option>
+  			<option>5</option>
+  			<option>4</option>
+  			<option>3</option>
+  			<option>2</option>
+  			<option>1</option>
+  			<option>Awful</option>
+  			</select>
+  			<br/>
+  			<br/>
+  			
+  <input type="submit" id="submit" name="submit" value="submit" onclick="formsubmit()">
+  <input type="reset" id="resit" name="rest" value ="reset"  onclick="formrest()">
+ </form>
+  </body>
+</html>
