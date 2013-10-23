@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Portal    </title>
+    <style type="text/css">
+      .hidden{
+        display:none;
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:10000;
+        width:100%;
+        height:100%;
+        background-color:white;
+      }
+    </style>
+  
+    <script type="text/javascript" src="AJAXWindow.js"></script>
+     
+    <script type="text/javascript" src="net12.js"></script>
+    
+    <script type="text/javascript">
+function getXMLHttpRequest() {
+  var xmlHttpReq = false;
+  // to create XMLHttpRequest object in non-Microsoft browsers
+  if (window.XMLHttpRequest) {
+    xmlHttpReq = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try {
+      // to create XMLHttpRequest object in later versions
+      // of Internet Explorer
+      xmlHttpReq = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (exp1) {
+      try {
+        // to create XMLHttpRequest object in older versions
+        // of Internet Explorer
+        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (exp2) {
+        xmlHttpReq = false;
+      }
+    }
+  }
+  return xmlHttpReq;
+}
+/*
+ * AJAX call starts with this function
+ */
+
+
+     
+ 
+function makeRequest() {
+  var xmlHttpRequest = getXMLHttpRequest();
+  xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
+  xmlHttpRequest.open("POST", "Login.do", true);
+  var strName = document.Form1.username.value;
+   var strPass = document.Form1.password.value;
+   var str = "username:"+ strName;
+   var obj = new Object();
+   obj.name = strName;
+   obj.password = strPass;
+   var jsonString= JSON.stringify(obj)
+  xmlHttpRequest.setRequestHeader("Content-Type",
+      "application/x-www-form-urlencoded");
+    xmlHttpRequest.send(jsonString);
+   //xmlHttpRequest.send(strPass);
+}
+ 
+/*
+ * Returns a function that waits for the state change in XMLHttpRequest
+ */
+function getReadyStateHandler(xmlHttpRequest) {
+ 
+  // an anonymous function returned
+  // it listens to the XMLHttpRequest instance
+  return function() {
+    if (xmlHttpRequest.readyState == 4) {
+      if (xmlHttpRequest.status == 200) {
+        document.getElementById("spanProcessing").innerHTML = xmlHttpRequest.responseText;
+      } else {
+        alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
+      }
+    }
+  };
+}
+
+
+
+
+</script>
+   
+    <link href="AjaxWindows.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+       body, html{ padding: 0px; margin: 0pc; height:100%;}
+           #header{ background-color: #C0C0C0; height: 100px; border-bottom: 1px solid black; font-weight: bold; }
+           #login{ text-align: right; float: right; margin-top:15px; margin-right:15px; }
+    </style>
+  </head>
+  <body>
+    <form name="Form1" action="Login">
+      <div id="header">
+        <span id="login">
+                  Name: <input type="text" name="username"><br>
+                  Password: <input type="password" name="password"><br>
+                   <span id="spanProcessing"></span>;
+                  <input type="button" name="btnSub" value="login" onclick="makeRequest()">
+             
+                </span>
+        <span id="sloganText">Punny Baby</span>
+      </div>
+    </form>
+  </body>
+</html>
