@@ -1,0 +1,164 @@
+<!html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+	#divID{  
+            width:500px;  
+            height:300px;  
+            border:1px solid #00ff00;  
+            text-align:left;  
+        } 
+    #textID{
+
+    	width: 300px;
+    	height: 200px;
+    	text-align: left;
+
+    } 
+        
+    </style>
+	<script type="text/javascript" scr="pimpmytext.js"></script>
+	<script type="text/javascript" src="jquery-1.7.1.js"></script>
+    <SCRIPT TYPE="text/javascript">
+     var fs = 12;
+     var intervalid;
+    function chgSize()
+       {
+	var obj = document.getElementById("textareaId")
+	var col=5;
+	var row=1;
+	obj.cols+=col;
+	obj.rows+=row;
+	//alert(obj.style.fontSize);
+	//obj.style.fontSize = 24;
+     fs = fs + 2;
+    obj.style.fontSize = fs ;
+}
+function timer() {
+ var intervalid = setInterval(function() {chgSize()} ,500)
+}
+
+function addStyle() {
+// alert("alert");
+var obj = document.getElementById("textareaId");
+ if($("input[type='checkbox']").is(':checked')==true) {
+ 	obj.style.fontWeight='bold';
+ 	obj.style.color="green";
+ 	obj.style.textDecoration ="underline";
+ 	obj.style.textDecoration ="blink";
+    document.body.style.backgroundImage = "url(rose.jpg)"
+ }
+ else {
+ 	
+ 	obj.style.fontSize= 12;
+ }
+}
+function Uppercase() {
+    document.getElementById("textareaId").value = document.getElementById("textareaId").value.toUpperCase();
+    var str = document.getElementById("textareaId").value;
+    var parts = str.split(".");
+    str = parts.join("-izzle");
+    document.getElementById("textareaId").value = str;
+}
+
+function convertString()  {
+    var str =document.getElementById("textareaId").value;
+    var word;
+    var s=""
+    var stra = new Array();
+    var stra = str.split(" ");
+   // alert(stra.length);
+  //  alert(str);
+    for (var i=0; i<stra.length; i++) {
+
+         word=stra[i];
+       //  alert(word);
+       pre= preword(word);
+     //  alert(pre);
+    //   alert(convertword(pre));
+        s= s + convertword(preword(word)); 
+     //   alert(s);
+    }
+    document.getElementById("textareaId").value=s;
+  //  alert(preword(s));
+
+}
+function preword(word) {
+    var s= word.charAt(word.length-1); // get last char
+    if (IsLetter(s))
+        return word
+        else
+            return word.substring(0,word.length-1);
+}
+function IsLetter(ch){      
+ return ((('a'<=ch) && (ch<='z')) || (('A'<=ch) && (ch<='Z')))      
+}                              
+
+function convertword(word) {
+ //   word="bc";
+    var rword = "";
+    var k = firstVowel(word)
+  //  alert(k);
+   if (!k ) {
+    rword = word+"-ay";
+   }
+   else {
+    endstring = word.substring(k);
+    sstring = word.substring(0,k);
+     rword = endstring+sstring+"-ay";
+   }
+ //  alert(rword);
+   return rword;
+
+}
+function firstVowel(str) 
+{
+  //  l = str.length();
+    var k = 0;
+    for (var i =0; i<str.length; i++) {
+      if (isVowel(str[i])) {
+           return k;
+      }
+      else {
+        k++;
+      }
+    }
+    return k;
+}
+function isVowel(char) {
+    if (char == "A" || char =="a" ) 
+        return true;
+    if (char == "E" || char =="e" ) 
+        return true;
+    if (char == "I" || char =="i" ) 
+        return true;
+     if (char == "O" || char =="o" ) 
+        return true;
+    if (char == "U" || char =="u" ) 
+        return true;
+}
+</script>
+   
+</head>
+
+<body>
+<img src="rose.jpg" />
+<p id="textHead" >Text <br/> </p>
+<textarea id="textareaId" class="textareaClass" name="text" clos="20" rows="5">
+
+</textarea>
+
+<div>
+<p id="cntrolHead"> Pimpifcation <br/></p>
+<input type="button" id="button1" class="button1" value="BiggerPimpin" onclick="timer()"> 
+<input type="button" id="button3" class="button3" value="stop" onclick="clearInterval(intervalid)"> <br>
+
+<label for="checkbox1">Bling </label>
+  <input type="checkbox" name="checkbox" id="checkbox"  onchange="addStyle()"> <br/>
+
+<input type="button" id="button2" class="button2" value="Snoopify" onclick="Uppercase()"> <br/>
+<input type="button" id="button4" class="button4" value="Igpay Atinlay" onclick="convertString()">
+</div>
+</body>
+
+</html>
