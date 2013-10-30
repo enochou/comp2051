@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Product</title>
+    <style type="text/css">
+      .hidden{
+        display:none;
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:10000;
+        width:100%;
+        height:100%;
+        background-color:white;
+      }
+    </style>
+   
+    <script type="text/javascript" src="net.js"></script>
+    <script type="text/javascript" src="json.js"></script>
+ 
+    <script type="text/javascript">
+
+      var reqXML;
+
+      function ProductRequest(){
+        var url = 'Product.do';
+        var obj = new Object();
+   			obj.Product = document.Form1.product.value;
+   		var jsonString= JSON.stringify(obj)
+        
+        var loader1=new net.ContentLoader(url,RespondScript,null,"POST",jsonString);
+      }
+
+          function RespondScript(){
+            strText = this.req.responseText;
+            var resonseObj = strText.parseJSON();
+           document.getElementById("pdeatil") = responseObj.Title;
+           document.getElementById("Artist") = responseObj.Artist;
+           document.getElementById("Price")= responseObj.Price;
+           document.getElementById("Id") = responseObj.Id;
+           
+           }
+            function writelog(log) {
+    document.getElementById("logger").innerHTML += log + "<br>";
+    }
+    </script>
+    
+  </head>
+  <body>
+     <form name="Form1">
+      <div id="product">
+        <span id="login">
+               Product: <input type="text" "name"=product/>
+      <input type="button"  value="Product detail" onclick="ProductRequest()">
+        </span>
+      </div>
+      </form>
+      <div id="Product detail">
+       Item Id:<span id="Id"></span> <br/>
+       Title:<span id="Title"></span> <br/>
+       Atrist:<span id="Artist"></span> <br/>
+       Price: <span id="Price"></span> <br/> 
+      </div>
+     <div id="logger"></div>
+  </body>
+</html>
